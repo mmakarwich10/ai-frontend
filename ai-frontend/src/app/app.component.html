@@ -1,7 +1,14 @@
 <div class="wrapper">
   <div class="chat-messages">
-    <div class="chat-message" *ngFor="let msg of chatMsgs">
-      {{msg}}
+    <div class="chat-message-wrapper" *ngFor="let msg of chatMsgs">
+      <div class="icon">
+        <img [src]="msg.userIconLocation" />
+      </div>
+      <div class="username">
+        {{msg.username}}
+      </div>
+      <div class="message" [innerText]="msg.message">
+      </div>
     </div>
   </div>
   <div class="chat-input">

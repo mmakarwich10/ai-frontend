@@ -2,30 +2,71 @@
     display: grid;
     grid-template-columns: [left-margin] 1fr [content-col] 1fr [right-margin] 1fr;
     grid-template-rows: [chat-messages] 1fr [chat-input] auto;
+
     height: 100vh;
-    background-color: #222;
-    color: #eee;
+    background-color: #272727;
+    color: var(--text-color);
+
     --left-right-gutter-length: 10px;
+    --text-color: #eee;
+    --chat-container-color: #222;
 
     .chat-messages {
         grid-column-start: content-col;
         grid-row-start: chat-messages;
+
         overflow: auto;
         padding: 0 var(--left-right-gutter-length);
+        background-color: var(--chat-container-color);
 
-        .chat-message {
+        .chat-message-wrapper {
+            display: grid;
+            grid-template-columns: [icon-col] auto [text-col] 1fr;
+            grid-template-rows: [username] auto [message-first-line] auto [message-rem] 1fr;
+            
             padding: 10px 0;
+            border-bottom: 1px solid #333;
+
+            .icon {
+                grid-column-start: icon-col;
+                grid-row-start: username;
+                grid-row-end: message-rem;
+
+                margin-right: 15px;
+                height: 50px;
+                width: 50px;
+
+                img {
+                    border-radius: 25px;
+                }
+            }
+
+            .username {
+                grid-column-start: text-col;
+                grid-row-start: username;
+
+                font-weight: bold;
+            }
+
+            .message {
+                grid-column-start: text-col;
+                grid-row-start: message-first-line;
+                grid-row-end: span message-rem;
+            }
         }
     }
 
     .chat-input {
         grid-column-start: content-col;
         grid-row-start: chat-input;
+
         padding: 20px var(--left-right-gutter-length);
+        background-color: var(--chat-container-color);
 
         input {
             width: 100%;
             background-color: #373737;
+            color: var(--text-color);
             border: unset;
             padding-left: var(--left-right-gutter-length);
         }
