@@ -1,0 +1,33 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: [left-margin] 1fr [content-col] 1fr [right-margin] 1fr;
+    grid-template-rows: [chat-messages] 1fr [chat-input] auto;
+    height: 100vh;
+    background-color: #222;
+    color: #eee;
+    --left-right-gutter-length: 10px;
+
+    .chat-messages {
+        grid-column-start: content-col;
+        grid-row-start: chat-messages;
+        overflow: auto;
+        padding: 0 var(--left-right-gutter-length);
+
+        .chat-message {
+            padding: 10px 0;
+        }
+    }
+
+    .chat-input {
+        grid-column-start: content-col;
+        grid-row-start: chat-input;
+        padding: 20px var(--left-right-gutter-length);
+
+        input {
+            width: 100%;
+            background-color: #373737;
+            border: unset;
+            padding-left: var(--left-right-gutter-length);
+        }
+    }
+}
